@@ -1,0 +1,265 @@
+.book-container {
+  display: none;
+  perspective: 2000px;
+  margin-top: 120px;
+}
+
+.book {
+  width: 90%;
+  max-width: 900px;
+  height: 450px;
+  margin: auto;
+  position: relative;
+  transform-style: preserve-3d;
+  transition: transform 1s;
+}
+
+.page {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  background: white;
+  border-radius: 20px;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+  display: flex;
+  overflow: hidden;
+  backface-visibility: hidden;
+  flex-direction: row;
+  flex-wrap: nowrap;
+}
+
+.page.front {
+  z-index: 2;
+}
+
+.page.back {
+  transform: rotateY(180deg);
+  justify-content: center;
+  align-items: center;
+  font-size: 2rem;
+  color: #ff1493;
+  font-weight: bold;
+  background-color: #fff0f5;
+}
+
+.book.opened {
+  transform: rotateY(180deg);
+}
+
+.photo-left,
+.wishes {
+  width: 50%;
+  padding: 10px;
+}
+
+.photo-left img {
+  width: 100%;
+  height: 100%;
+  border-radius: 15px;
+  object-fit: cover;
+}
+
+.wishes {
+  position: relative;
+}
+
+.wishes h2 {
+  margin-top:30px;
+  font-size: 1.8rem;
+  color: #d63384;
+}
+
+.wishes p {
+  margin-top:20px;
+  text-align: justify;
+  font-size: 1rem;
+}
+
+.close-btn {
+  position: absolute;
+  bottom: 20px;
+  right: 20px;
+  background-color: #ff69b4;
+  color: white;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 8px;
+  font-size: 1rem;
+  cursor: pointer;
+}
+
+.heart {
+  position: fixed;
+  width: 20px;
+  height: 20px;
+  background: #ff69b4;
+  transform: rotate(45deg);
+  animation: float 5s infinite linear;
+  z-index: 0;
+}
+
+.heart::before,
+.heart::after {
+  content: '';
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  background: #ff69b4;
+  border-radius: 50%;
+}
+
+.heart::before {
+  top: -10px;
+  left: 0;
+}
+
+.heart::after {
+  left: -10px;
+  top: 0;
+}
+
+@keyframes float {
+  0% {
+    top: -10%;
+    opacity: 1;
+  }
+
+  100% {
+    top: 110%;
+    opacity: 0;
+    transform: rotate(360deg);
+  }
+}
+
+.message {
+  display: none;
+  font-size: 2rem;
+  color: #ff1493;
+  margin-top: 40px;
+  font-weight: bold;
+}
+
+/* ---------- Media Queries for Responsive Design ---------- */
+
+/* Tablets and below */
+@media (max-width: 768px) {
+  .page {
+    flex-direction: column;
+    height: auto;
+  }
+
+  .photo-left,
+  .wishes {
+    width: 100%;
+    padding: 10px;
+  }
+
+  .photo-left img {
+    height: auto;
+  }
+
+  .wishes h2 {
+    font-size: 1.5rem;
+    text-align: center;
+  }
+
+  .wishes p {
+    font-size: 1rem;
+    text-align: center;
+  }
+
+  .close-btn {
+    position: static;
+    margin: 20px auto 0;
+    display: block;
+  }
+
+  .book {
+    height: auto;
+  }
+
+  .page.back {
+    font-size: 1.8rem;
+    padding: 20px;
+    text-align: center;
+  }
+}
+
+/* Small devices (phones) */
+@media (max-width: 576px) {
+    .book-container {
+  display: none;
+  perspective: 2000px;
+  margin-top: 40px;
+}
+  .wishes h2 {
+    font-size: 1.3rem;
+  }
+
+  .wishes p {
+    font-size: 0.95rem;
+  }
+
+  .page.back {
+    font-size: 1.6rem;
+  }
+
+  .book {
+    width: 95%;
+  }
+}
+
+/* Extra small phones */
+@media (max-width: 400px) {
+    .book-container {
+  display: none;
+  perspective: 2000px;
+  margin-top: 40px;
+}
+  .wishes h2 {
+    font-size: 1.2rem;
+  }
+
+  .wishes p {
+    font-size: 0.9rem;
+  }
+
+  .page.back {
+    font-size: 1.4rem;
+  }
+
+  .close-btn {
+    padding: 6px 12px;
+    font-size: 0.9rem;
+  }
+}
+.love-message {
+  text-align: center;
+  padding: 20px;
+}
+
+.love-message h2 {
+  color: #e91e63;
+  font-size: 2em;
+  margin-bottom: 20px;
+  animation: fadeIn 2s ease-in-out;
+}
+
+.proposal-gif {
+  max-width: 100%;
+  height: auto;
+  border-radius: 10px;
+  animation: bounceIn 1.5s ease-in-out;
+}
+
+/* Optional animations */
+@keyframes fadeIn {
+  0% { opacity: 0; transform: translateY(20px); }
+  100% { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes bounceIn {
+  0% { opacity: 0; transform: scale(0.8); }
+  60% { opacity: 1; transform: scale(1.1); }
+  100% { transform: scale(1); }
+}
